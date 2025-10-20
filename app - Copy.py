@@ -48,7 +48,7 @@ def load_model(path="best_churn_model.joblib"):
 def make_form():
     st.subheader("Single Prediction")
     with st.form("single_form"):
-        c1, c2 = st.columns(1)
+        c1, c2 = st.columns(2)
         v = {}
 
         v['age'] = int(c1.number_input("Age", min_value=0, max_value=120,
@@ -115,6 +115,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
