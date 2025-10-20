@@ -102,7 +102,7 @@ def main():
         st.error(err)
         st.stop()
 
-    tab1, tab2 = st.tabs([" Single Prediction"])
+    tab1, tab2 = st.tabs([" Single Prediction",batch"])
 
     with tab1:
         df = make_form()
@@ -115,4 +115,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
