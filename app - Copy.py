@@ -96,13 +96,13 @@ def score_df(model, df):
     return pred, proba
 
 def main():
-    st.title( Churn Predictor")
+    st.title("Churn Predictor")
     model, err = load_model()
     if err:
         st.error(err)
         st.stop()
 
-    tab1, tab2 = st.tabs([" Single Prediction",batch"])
+    tab1, tab2 = st.tabs([" Single Prediction"])
 
     with tab1:
         df = make_form()
@@ -115,5 +115,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
