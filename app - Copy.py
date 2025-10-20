@@ -4,7 +4,7 @@ import joblib
 
 st.set_page_config(page_title="Churn Predictor", page_icon="📉", layout="centered")
 
-# --- CSS to emphasize Predict button ---
+# --- CSS to emphasise Predict button ---
 st.markdown("""
 <style>
 div.stButton > button, div.stForm form button {
@@ -84,7 +84,7 @@ def make_form():
         v['contract_length_Monthly'] = 1 if cl_choice == "Monthly" else 0
         v['contract_length_Quarterly'] = 1 if cl_choice == "Quarterly" else 0
 
-        predict_clicked = st.form_submit_button("Prediction")
+        predict_clicked = st.form_submit_button("Predict")
 
     if predict_clicked:
         return pd.DataFrame([v], columns=FEATURE_ORDER)
@@ -105,9 +105,10 @@ def main():
     df = make_form()
     if not df.empty:
         y_pred, y_proba = score_df(model, df)
-        st.success(f"Prediction: {int(y_pred[0])} (1 = churn, 0 = no churn)")
-        if y_proba is not None:
-            st.info(f"Churn Probability: {y_proba[0]:.4f}")
+        if int(y_pred[0]) == 1:
+            st.success("We predict that this customer **will churn**.")
+        else:
+            st.success("We predict that this customer **will not churn**.")
 
 if __name__ == "__main__":
     main()
