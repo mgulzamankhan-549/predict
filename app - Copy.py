@@ -102,23 +102,12 @@ def main():
         st.error(err)
         st.stop()
 
-    tab1, tab2 = st.tabs([" Single Prediction", "  (CSV)"])
-
-    with tab1:
-        df = make_form()
-        if not df.empty:
-            y_pred, y_proba = score_df(model, df)
-            st.success(f"Prediction: {int(y_pred[0])} (1 = churn, 0 = no churn)")
-            if y_proba is not None:
-                st.info(f"Churn Probability: {y_proba[0]:.4f}")
-
+    df = make_form()
+    if not df.empty:
+        y_pred, y_proba = score_df(model, df)
+        st.success(f"Prediction: {int(y_pred[0])} (1 = churn, 0 = no churn)")
+        if y_proba is not None:
+            st.info(f"Churn Probability: {y_proba[0]:.4f}")
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
